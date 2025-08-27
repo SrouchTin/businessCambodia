@@ -1,0 +1,219 @@
+        @import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@300;400;700;900&display=swap');
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hanuman', serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+            color: #333;
+            padding-top: 76px; /* Added to compensate for fixed navbar */
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+        .navbar .nav-link {
+            color: #fff;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .navbar .nav-link:hover {
+            color: #ff3b3b;
+        }
+        .navbar .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            left: 0;
+            bottom: -4px;
+            background: #ff3b3b;
+            transition: width 0.3s ease;
+        }
+        .navbar .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-container {
+            position: relative;
+            background: url("/Image/hero-container.jpg") center/cover no-repeat;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        .hero-container::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.7));
+        }
+        .hero-text-container {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            animation: fadeInUp 1s ease forwards;
+        }
+        .hero-text-container h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        /* Cards Section - FIXED */
+        .card-custom {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            height: 100%; /* Ensure consistent height */
+            display: flex;
+            flex-direction: column;
+        }
+        .card-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* Card image container for proper overflow control */
+        .card-img-container {
+            overflow: hidden;
+            position: relative;
+            height: 180px;
+        }
+        .card-custom img.card-img-top {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Card body with flex grow for consistent height */
+        .card-custom .card-body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        /* Cart button */
+        .card-custom .btn-cart {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50px;
+            background: #ff3b3b;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10;
+            border: none;
+        }
+
+        /* Hover effects */
+        .card-custom:hover .card-img-top {
+            transform: scale(1.1);
+        }
+        .card-custom:hover .btn-cart {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .card-custom .btn-cart:hover {
+            background: #e63946;
+            transform: scale(1.2);
+        }
+
+        /* Label styling */
+        .card-custom .label {
+            background: #e0e0e0;
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            color: #333;
+            transition: 0.3s;
+            align-self: flex-start;
+        }
+        .card-custom .label:hover {
+            background: #ff3b3b;
+            color: #fff;
+        }
+        
+        /* Text description */
+        .card-custom p.text-desc {
+            font-size: 0.95rem;
+            margin: 8px 0;
+            line-height: 1.5;
+            display: -webkit-box; 
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+        
+        /* Author section at bottom */
+        .card-custom .author-section {
+            margin-top: auto;
+            padding-top: 10px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #ff3b3b;
+            left: 0;
+            bottom: -5px;
+            border-radius: 3px;
+        }
+        .img-footer{
+            width: 120px;
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-container {
+                text-align: center;
+                justify-content: center;
+                padding: 0 20px;
+            }
+            .hero-meta {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
